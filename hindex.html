@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sree+Krushnadevaraya&display=swap');
+        body{
+            background: #000;
+            font-size: 30px;
+            color: green;
+
+        }
+      </style>
+</head>
+<body>
+    <div> </div>
+    <script>
+     
+          const randomdelay=()=>{
+            return new Promise((res,rej)=>{
+                timeout = 1+6*Math.random()
+
+                setTimeout(()=>{
+                    res()
+
+                }, timeout*1000)
+            })
+        }
+        async function main(){
+        setInterval(()=>{
+            let last=  document.body.lastElementChild
+            if(last.innerHTML.endsWith("...")){
+                last.innerHTML = last.innerHTML.slice(0,last.innerHTML.length-3)
+            }
+            else{
+                last.innerHTML= last.innerHTML+"."
+            }
+         },700)
+         const additem= async (item)=>{
+             await randomdelay()
+             let div = document.createElement("div")
+             div.innerHTML=item
+             document.body.append(div)
+ 
+         }
+        
+        let text =["Initializing Hacking",
+        "Reading your Files",
+        "Password fields detected",
+        "Sending all passwords and personal files to server",
+        "Cleaning up data"]
+        for(const item of text){
+          await  additem(item)
+        }
+        await randomdelay()
+        clearInterval(t)
+    }
+    main()
+      
+    </script>
+    
+</body>
+</html>
